@@ -5,14 +5,14 @@ import { ArrowLeft, Calendar } from 'lucide-react'
 import Reveal from '../components/Reveal'
 import CtaBand from '../components/CtaBand'
 import { formatDate, usePageTitle } from '../lib/site'
-import { articles } from '../lib/articles'
+import { getArticle } from '../lib/content'
 
 const ArticleBody = lazy(() => import('../components/ArticleBody'))
 
 export default function ArticleDetailPage() {
   const { slug } = useParams()
   const { t, i18n } = useTranslation()
-  const article = articles.find((a) => a.slug === slug)
+  const article = getArticle(slug, i18n.language)
   usePageTitle(article?.title ?? t('articles.notFound'))
 
   return (

@@ -1,6 +1,6 @@
 # Ibnu Haidar — Portfolio
 
-Single-page portfolio built with Vite, React, Tailwind CSS (class-based dark mode), i18next (EN/ID), framer-motion, recharts and react-markdown.
+Portfolio built with Vite, React, Tailwind CSS (class-based dark mode), i18next (EN/ID), framer-motion, recharts and react-markdown.
 
 ## Run locally
 
@@ -14,30 +14,24 @@ npm run dev
 | Menu | URL | File |
 | --- | --- | --- |
 | Home | `/` | `src/pages/HomePage.jsx` |
-| Portfolio | `/portfolio` | `src/pages/PortfolioPage.jsx` |
-| Services | `/services` | `src/pages/ServicesPage.jsx` |
+| Portfolio | `/portfolio`, `/portfolio/:slug` | `src/pages/PortfolioPage.jsx`, `CaseStudyPage.jsx` |
 | Tools | `/tools` | `src/pages/ToolsPage.jsx` |
 | Articles | `/articles`, `/articles/:slug` | `src/pages/ArticlesPage.jsx`, `ArticleDetailPage.jsx` |
 | About | `/about` | `src/pages/AboutPage.jsx` (the original landing page sections) |
-| Contact | `/contact` | `src/pages/ContactPage.jsx` |
+
+Any other URL shows `src/pages/NotFoundPage.jsx`. The old `/services` and `/contact` pages redirect to `/`.
 
 ## Edit content
 
-- **Text (EN / ID), incl. portfolio projects, services and toolkit:** `src/i18n/en.js` and `src/i18n/id.js`
+- **UI text (EN / ID), incl. toolkit list:** `src/i18n/en.js` and `src/i18n/id.js`. English is the default language.
+- **Markdown content:** `src/content/case-studies`, `src/content/articles`, `src/content/tools`, loaded by `src/lib/content.js`.
+  - `<slug>.md` is the English version, `<slug>.id.md` the optional Indonesian one (falls back to English).
+  - The file name is the URL: `src/content/articles/my-post.md` → `/articles/my-post`, `src/content/case-studies/my-project.md` → `/portfolio/my-project`.
+  - Each folder has an `example-*.md` with every front matter field. `draft: true` hides a file from the production build.
+- **Portfolio slides:** export your PowerPoint as PDF into `public/portfolio/` and set `file: "/portfolio/my-project.pdf"` in the case study front matter.
 - **Skill scores:** `COMPETENCIES` and `TOOLS` in `src/sections/Skills.jsx`
 - **Certification links:** `src/sections/Certifications.jsx`
-- **Portfolio slides:** export your PowerPoint as PDF and save it in `public/portfolio/` (e.g. `public/portfolio/my-project.pdf`),
-  then set `file: '/portfolio/my-project.pdf'` on that portfolio item in both `en.js` and `id.js`. Items without `file` show no "View slides" button.
-- **Articles:** add a `.md` file to `src/content/articles/` with `title`, `date` and `summary` frontmatter — it gets its own page at `/articles/<file-name>`
 - **CV:** replace `public/resume.pdf` with your real CV (same file name)
-
-## Contact form
-
-By default the form posts to FormSubmit, which delivers to `ibn_haidar@outlook.com` with no API key.
-The **first** submission triggers a one-time activation email to that inbox — click the link in it to start receiving messages.
-
-To use Web3Forms instead, create an access key at https://web3forms.com with `ibn_haidar@outlook.com`, then copy `.env.example` to `.env`
-and set `VITE_WEB3FORMS_KEY` (also add it as an environment variable in Vercel/Netlify).
 
 ## Deploy
 

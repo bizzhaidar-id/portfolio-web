@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Calculator, PiggyBank, Wrench } from 'lucide-react'
+import { ArrowRight, Calculator, PiggyBank, Wrench } from 'lucide-react'
 import PageHeader from '../components/PageHeader'
 import Reveal from '../components/Reveal'
+import { getTools } from '../lib/content'
 
 function NumberField({ label, value, onChange }) {
   return (
@@ -62,6 +63,7 @@ export default function ToolsPage() {
   const [saving, setSaving] = useState('2.5')
   const [volume, setVolume] = useState('13000')
   const monthly = Number(saving) * Number(volume)
+  const resources = getTools(i18n.language)
 
   return (
     <>
@@ -114,6 +116,30 @@ export default function ToolsPage() {
           ))}
         </div>
       </section>
+
+      {resources.length > 0 && (
+        <section className="section pt-0">
+          <h2 className="section-title">{t('tools.resourcesTitle')}</h2>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {resources.map((r, i) => (
+              <Reveal key={r.slug} delay={i * 0.06} className="card flex flex-col">
+                <h3 className="font-semibold text-slate-900 dark:text-white">{r.title}</h3>
+                <p className="mt-1 flex-1 text-sm">{r.summary}</p>
+                {r.url && (
+                  <a
+                    href={r.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-1.5 self-start text-sm font-semibold text-brand-600 hover:text-brand-700 dark:text-brand-400"
+                  >
+                    {t('tools.open')} <ArrowRight size={16} />
+                  </a>
+                )}
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      )}
     </>
   )
 }

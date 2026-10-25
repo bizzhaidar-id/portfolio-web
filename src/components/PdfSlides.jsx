@@ -3,7 +3,7 @@ import { Document, Page, pdfjs } from 'react-pdf'
 import { useTranslation } from 'react-i18next'
 import { ChevronLeft, ChevronRight, Download, ExternalLink, Loader2 } from 'lucide-react'
 
-// Loaded lazily from PortfolioPage, so pdf.js only downloads when someone opens a deck.
+// Loaded lazily from PortfolioPage and CaseStudyPage, so pdf.js only downloads when someone opens a deck.
 pdfjs.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.mjs', import.meta.url).toString()
 
 export default function PdfSlides({ file }) {

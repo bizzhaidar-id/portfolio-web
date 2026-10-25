@@ -1,21 +1,23 @@
 import { lazy, Suspense, useCallback, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { Link } from 'react-router'
 import { useTranslation } from 'react-i18next'
 import { Presentation } from 'lucide-react'
 import PageHeader from '../components/PageHeader'
 import CtaBand from '../components/CtaBand'
 import Modal from '../components/Modal'
+import { getCaseStudies } from '../lib/content'
 
 const PdfSlides = lazy(() => import('../components/PdfSlides'))
 
 const FILTERS = ['all', 'improvement', 'operations', 'research', 'learning']
 
 export default function PortfolioPage() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [filter, setFilter] = useState('all')
   const [active, setActive] = useState(null)
   const close = useCallback(() => setActive(null), [])
-  const items = t('portfolio.items').filter((p) => filter === 'all' || p.category === filter)
+  const items = getCaseStudies(i18n.language).filter((p) => filter === 'all' || p.category === filter)
 
   return (
     <>
@@ -40,7 +42,7 @@ export default function PortfolioPage() {
           <AnimatePresence mode="popLayout">
             {items.map((p) => (
               <motion.article
-                key={p.title}
+                key={p.slug}
                 layout
                 className="card flex flex-col"
                 initial={{ opacity: 0, scale: 0.96 }}
@@ -53,7 +55,11 @@ export default function PortfolioPage() {
                     <span className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
                       {t(`portfolio.categories.${p.category}`)}
                     </span>
-                    <h2 className="mt-1 text-lg font-semibold text-slate-900 dark:text-white">{p.title}</h2>
+                    <h2 className="mt-1 text-lg font-semibold text-slate-900 dark:text-white">
+                      <Link to={`/portfolio/${p.slug}`} className="hover:text-brand-600 dark:hover:text-brand-400">
+                        {p.title}
+                      </Link>
+                    </h2>
                     <p className="text-xs text-slate-500 dark:text-slate-400">{p.context}</p>
                   </div>
                   <div className="shrink-0 text-right">
@@ -64,7 +70,7 @@ export default function PortfolioPage() {
                 <p className="mt-4 flex-1 text-sm leading-relaxed">{p.summary}</p>
                 <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
                   <ul className="flex flex-wrap gap-2">
-                    {p.tags.map((tag) => (
+                    {p.tags?.map((tag) => (
                       <li
                         key={tag}
                         className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300"

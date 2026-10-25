@@ -12,7 +12,8 @@ try {
 
 i18n.use(initReactI18next).init({
   resources: { en: { translation: en }, id: { translation: id } },
-  lng: saved || (navigator.language?.startsWith('id') ? 'id' : 'en'),
+  // English is the default; Indonesian only after the visitor picks it in the navbar.
+  lng: saved === 'id' ? 'id' : 'en',
   fallbackLng: 'en',
   interpolation: { escapeValue: false },
   returnObjects: true,

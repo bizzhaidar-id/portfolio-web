@@ -6,7 +6,7 @@ import Reveal from '../components/Reveal'
 import ArticleCard from '../components/ArticleCard'
 import CtaBand from '../components/CtaBand'
 import { usePageTitle } from '../lib/site'
-import { articles } from '../lib/articles'
+import { getArticles } from '../lib/content'
 
 const EXPLORE = [
   { key: 'portfolio', to: '/portfolio', icon: Briefcase },
@@ -15,7 +15,7 @@ const EXPLORE = [
 ]
 
 export default function HomePage() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   usePageTitle()
 
   return (
@@ -95,7 +95,7 @@ export default function HomePage() {
           </Link>
         </Reveal>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {articles.slice(0, 3).map((a, i) => (
+          {getArticles(i18n.language).slice(0, 3).map((a, i) => (
             <ArticleCard key={a.slug} article={a} index={i} />
           ))}
         </div>

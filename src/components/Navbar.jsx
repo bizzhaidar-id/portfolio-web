@@ -56,14 +56,20 @@ export default function Navbar({ dark, onToggleDark }) {
           <button onClick={onToggleDark} className={iconBtn} aria-label={t('nav.toggleTheme')}>
             {dark ? <Sun size={16} /> : <Moon size={16} />}
           </button>
-          <button onClick={() => setOpen((o) => !o)} className={`${iconBtn} lg:hidden`} aria-label={t('nav.menu')}>
+          <button
+            onClick={() => setOpen((o) => !o)}
+            className={`${iconBtn} lg:hidden`}
+            aria-label={t('nav.menu')}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+          >
             {open ? <X size={16} /> : <Menu size={16} />}
           </button>
         </div>
       </nav>
 
       {open && (
-        <ul className="grid gap-1 border-t border-slate-200 px-4 py-3 lg:hidden dark:border-slate-800">
+        <ul id="mobile-menu" className="grid gap-1 border-t border-slate-200 px-4 py-3 lg:hidden dark:border-slate-800">
           {PAGES.map((p) => (
             <li key={p.key}>
               <NavLink to={p.to} end={p.to === '/'} onClick={() => setOpen(false)} className={(s) => `block ${linkClass(s)}`}>

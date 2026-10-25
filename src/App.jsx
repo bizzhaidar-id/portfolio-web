@@ -1,10 +1,11 @@
 import { lazy, useEffect, useState } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router'
 import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
 
 // Every page except Home is code-split, so visitors only download what they open.
 const PortfolioPage = lazy(() => import('./pages/PortfolioPage'))
+const CaseStudyPage = lazy(() => import('./pages/CaseStudyPage'))
 const ToolsPage = lazy(() => import('./pages/ToolsPage'))
 const ArticlesPage = lazy(() => import('./pages/ArticlesPage'))
 const ArticleDetailPage = lazy(() => import('./pages/ArticleDetailPage'))
@@ -29,10 +30,14 @@ export default function App() {
         <Route element={<Layout dark={dark} onToggleDark={() => setDark((d) => !d)} />}>
           <Route index element={<HomePage />} />
           <Route path="portfolio" element={<PortfolioPage />} />
+          <Route path="portfolio/:slug" element={<CaseStudyPage />} />
           <Route path="tools" element={<ToolsPage />} />
           <Route path="articles" element={<ArticlesPage />} />
           <Route path="articles/:slug" element={<ArticleDetailPage />} />
           <Route path="about" element={<AboutPage />} />
+          {/* Removed pages; vercel.json also redirects these server-side. */}
+          <Route path="services" element={<Navigate to="/" replace />} />
+          <Route path="contact" element={<Navigate to="/" replace />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
