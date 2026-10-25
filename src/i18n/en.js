@@ -184,9 +184,9 @@ export default {
     },
     latestTitle: 'Latest articles',
     viewAll: 'View all articles',
-    ctaTitle: "Let's work together",
-    ctaBody: "Have a logistics challenge, a project, or just a question? I'd be glad to hear from you.",
-    ctaButton: 'Get in touch',
+    ctaTitle: "Let's connect",
+    ctaBody: 'Hiring for supply chain, logistics or operational excellence, or want to exchange ideas on improvement? Reach me by email or LinkedIn.',
+    ctaButton: 'Email me',
   },
   portfolio: {
     title: 'Portfolio',
