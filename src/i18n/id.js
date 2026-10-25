@@ -184,9 +184,9 @@ export default {
     },
     latestTitle: 'Artikel terbaru',
     viewAll: 'Lihat semua artikel',
-    ctaTitle: 'Mari bekerja sama',
-    ctaBody: 'Punya tantangan logistik, proyek, atau sekadar pertanyaan? Saya senang mendengarnya.',
-    ctaButton: 'Hubungi saya',
+    ctaTitle: 'Mari terhubung',
+    ctaBody: 'Sedang mencari talenta di supply chain, logistik, atau operational excellence, atau ingin bertukar ide soal perbaikan? Hubungi saya lewat email atau LinkedIn.',
+    ctaButton: 'Kirim email',
   },
   portfolio: {
     title: 'Portofolio',
