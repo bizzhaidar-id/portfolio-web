@@ -28,7 +28,7 @@ export default function PortfolioPage() {
               onClick={() => setFilter(f)}
               className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${
                 filter === f
-                  ? 'bg-brand-600 text-white dark:bg-brand-500'
+                  ? 'bg-brand-600 text-white dark:bg-brand-600'
                   : 'bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700'
               }`}
             >
@@ -76,7 +76,7 @@ export default function PortfolioPage() {
                   {p.file && (
                     <button
                       onClick={() => setActive(p)}
-                      className="inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-3.5 py-2 text-sm font-semibold text-white transition hover:bg-brand-700 dark:bg-brand-500 dark:hover:bg-brand-600"
+                      className="inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-3.5 py-2 text-sm font-semibold text-white transition hover:bg-brand-700 dark:bg-brand-600 dark:hover:bg-brand-700"
                     >
                       <Presentation size={16} /> {t('portfolio.viewDetails')}
                     </button>

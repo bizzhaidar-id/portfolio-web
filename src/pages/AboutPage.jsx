@@ -18,7 +18,7 @@ export default function AboutPage() {
   return (
     <>
       <Hero />
-      <nav className="sticky top-16 z-30 border-y border-slate-200 bg-white/90 backdrop-blur-md dark:border-slate-800 dark:bg-slate-950/90">
+      <nav className="sticky top-16 z-30 border-y border-slate-200 bg-sunset-50/90 backdrop-blur-md dark:border-slate-800 dark:bg-slate-950/90">
         <ul className="mx-auto flex max-w-5xl gap-1 overflow-x-auto px-4 py-2 sm:px-6">
           {ANCHORS.map((id) => (
             <li key={id}>

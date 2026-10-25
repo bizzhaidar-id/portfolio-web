@@ -2,9 +2,9 @@ import { PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, RadarChart, Responsi
 
 // Loaded lazily from Skills.jsx so recharts stays out of the initial bundle.
 export default function SkillsRadar({ data, dark }) {
-  const grid = dark ? '#334155' : '#cbd5e1'
-  const text = dark ? '#cbd5e1' : '#334155'
-  const fill = dark ? '#599fff' : '#1d5cf1'
+  const grid = dark ? '#41494d' : '#c9cccd'
+  const text = dark ? '#c9cccd' : '#41494d'
+  const fill = dark ? '#a6bcc4' : '#5b7586'
 
   return (
     <ResponsiveContainer width="100%" height={340}>
@@ -15,7 +15,7 @@ export default function SkillsRadar({ data, dark }) {
         <Radar dataKey="value" stroke={fill} strokeWidth={2} fill={fill} fillOpacity={dark ? 0.35 : 0.25} />
         <Tooltip
           contentStyle={{
-            background: dark ? '#0f172a' : '#ffffff',
+            background: dark ? '#1d2428' : '#ffffff',
             border: `1px solid ${grid}`,
             borderRadius: 8,
             color: text,
