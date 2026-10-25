@@ -93,18 +93,18 @@ export default function Contact() {
             <button
               type="submit"
               disabled={status === 'sending'}
-              className="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white transition hover:bg-brand-700 disabled:opacity-60 dark:bg-brand-500 dark:hover:bg-brand-600"
+              className="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white transition hover:bg-brand-700 disabled:opacity-60 dark:bg-brand-600 dark:hover:bg-brand-700"
             >
               <Send size={18} />
               {status === 'sending' ? t('contact.sending') : t('contact.submit')}
             </button>
             {status === 'success' && (
-              <p className="flex items-center gap-2 text-sm font-medium text-emerald-600 dark:text-emerald-400">
+              <p className="flex items-center gap-2 text-sm font-medium text-foliage-600 dark:text-foliage-300">
                 <CheckCircle2 size={18} /> {t('contact.success')}
               </p>
             )}
             {status === 'error' && (
-              <p className="flex items-center gap-2 text-sm font-medium text-red-600 dark:text-red-400">
+              <p className="flex items-center gap-2 text-sm font-medium text-terracotta-600 dark:text-terracotta-300">
                 <AlertCircle size={18} /> {t('contact.error')}
               </p>
             )}

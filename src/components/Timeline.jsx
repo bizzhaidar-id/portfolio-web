@@ -15,7 +15,7 @@ export function TimelineItem({ title, subtitle, meta, period, icon: Icon, childr
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.5, delay: index * 0.08, ease: 'easeOut' }}
     >
-      <span className="absolute -left-[2.85rem] flex h-8 w-8 items-center justify-center rounded-full bg-brand-600 text-white ring-4 ring-white dark:bg-brand-500 dark:ring-slate-950">
+      <span className="absolute -left-[2.85rem] flex h-8 w-8 items-center justify-center rounded-full bg-brand-600 text-white ring-4 ring-sunset-50 dark:bg-brand-600 dark:ring-slate-950">
         {Icon ? <Icon size={15} /> : <span className="h-2 w-2 rounded-full bg-white" />}
       </span>
       <div className="card">
