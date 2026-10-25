@@ -1,10 +1,13 @@
 import { motion } from 'framer-motion'
-import { Link } from 'react-router'
 import { useTranslation } from 'react-i18next'
 import { Download, Mail } from 'lucide-react'
+import LinkedinIcon from '../components/LinkedinIcon'
+import { EMAIL, SOCIALS } from '../lib/site'
 
 export default function Hero() {
   const { t } = useTranslation()
+  const secondary =
+    'inline-flex items-center gap-2 rounded-xl border border-slate-300 px-6 py-3 font-semibold text-slate-800 transition hover:bg-slate-100 dark:border-slate-700 dark:text-slate-100 dark:hover:bg-slate-800'
   return (
     <section className="relative overflow-hidden">
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-100/70 via-transparent to-transparent dark:from-brand-900/30" />
@@ -31,13 +34,14 @@ export default function Hero() {
             <Download size={18} />
             {t('hero.downloadCv')}
           </a>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 rounded-xl border border-slate-300 px-6 py-3 font-semibold text-slate-800 transition hover:bg-slate-100 dark:border-slate-700 dark:text-slate-100 dark:hover:bg-slate-800"
-          >
+          <a href={`mailto:${EMAIL}`} className={secondary}>
             <Mail size={18} />
             {t('hero.contactMe')}
-          </Link>
+          </a>
+          <a href={SOCIALS.linkedin} target="_blank" rel="noopener noreferrer" className={secondary}>
+            <LinkedinIcon size={18} />
+            LinkedIn
+          </a>
         </div>
       </motion.div>
     </section>

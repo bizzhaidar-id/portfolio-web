@@ -5,12 +5,10 @@ import HomePage from './pages/HomePage'
 
 // Every page except Home is code-split, so visitors only download what they open.
 const PortfolioPage = lazy(() => import('./pages/PortfolioPage'))
-const ServicesPage = lazy(() => import('./pages/ServicesPage'))
 const ToolsPage = lazy(() => import('./pages/ToolsPage'))
 const ArticlesPage = lazy(() => import('./pages/ArticlesPage'))
 const ArticleDetailPage = lazy(() => import('./pages/ArticleDetailPage'))
 const AboutPage = lazy(() => import('./pages/AboutPage'))
-const ContactPage = lazy(() => import('./pages/ContactPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
 export default function App() {
@@ -31,12 +29,10 @@ export default function App() {
         <Route element={<Layout dark={dark} onToggleDark={() => setDark((d) => !d)} />}>
           <Route index element={<HomePage />} />
           <Route path="portfolio" element={<PortfolioPage />} />
-          <Route path="services" element={<ServicesPage />} />
           <Route path="tools" element={<ToolsPage />} />
           <Route path="articles" element={<ArticlesPage />} />
           <Route path="articles/:slug" element={<ArticleDetailPage />} />
           <Route path="about" element={<AboutPage />} />
-          <Route path="contact" element={<ContactPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

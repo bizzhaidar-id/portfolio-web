@@ -6,6 +6,7 @@ import About from '../sections/About'
 import Skills from '../sections/Skills'
 import { Experience, Education } from '../sections/Experience'
 import Certifications from '../sections/Certifications'
+import CtaBand from '../components/CtaBand'
 
 const ANCHORS = ['about', 'skills', 'experience', 'education', 'certifications']
 
@@ -36,6 +37,7 @@ export default function AboutPage() {
       <Experience />
       <Education />
       <Certifications />
+      <CtaBand title={t('home.ctaTitle')} body={t('home.ctaBody')} button={t('home.ctaButton')} />
     </>
   )
 }

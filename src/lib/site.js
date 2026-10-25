@@ -3,11 +3,9 @@ import { useEffect } from 'react'
 export const PAGES = [
   { key: 'home', to: '/' },
   { key: 'portfolio', to: '/portfolio' },
-  { key: 'services', to: '/services' },
   { key: 'tools', to: '/tools' },
   { key: 'articles', to: '/articles' },
   { key: 'about', to: '/about' },
-  { key: 'contact', to: '/contact' },
 ]
 
 export function usePageTitle(title) {
@@ -23,6 +21,8 @@ export function formatDate(date, lang) {
     day: 'numeric',
   })
 }
+
+export const EMAIL = 'ibn_haidar@outlook.com'
 
 export const SOCIALS = {
   instagram: 'https://www.instagram.com/ibnuhaidar.id',

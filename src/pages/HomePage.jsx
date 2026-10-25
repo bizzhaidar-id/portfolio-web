@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router'
 import { useTranslation } from 'react-i18next'
-import { ArrowRight, Briefcase, Calculator, Handshake, Newspaper } from 'lucide-react'
+import { ArrowRight, Briefcase, Calculator, Newspaper } from 'lucide-react'
 import Reveal from '../components/Reveal'
 import ArticleCard from '../components/ArticleCard'
 import CtaBand from '../components/CtaBand'
@@ -10,9 +10,8 @@ import { articles } from '../lib/articles'
 
 const EXPLORE = [
   { key: 'portfolio', to: '/portfolio', icon: Briefcase },
-  { key: 'services', to: '/services', icon: Handshake },
-  { key: 'tools', to: '/tools', icon: Calculator },
   { key: 'articles', to: '/articles', icon: Newspaper },
+  { key: 'tools', to: '/tools', icon: Calculator },
 ]
 
 export default function HomePage() {
@@ -68,7 +67,7 @@ export default function HomePage() {
         <Reveal>
           <h2 className="section-title">{t('home.exploreTitle')}</h2>
         </Reveal>
-        <div className="grid gap-5 sm:grid-cols-2">
+        <div className="grid gap-5 md:grid-cols-3">
           {EXPLORE.map(({ key, to, icon: Icon }, i) => (
             <Reveal key={key} delay={i * 0.08}>
               <Link to={to} className="card group flex h-full items-start gap-4 transition hover:-translate-y-1 hover:shadow-md">
