@@ -1,8 +1,70 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Calculator, PiggyBank, Wrench } from 'lucide-react'
+import { Link } from 'react-router'
+import { ArrowRight, BookOpen, Calculator, FlaskConical, PiggyBank } from 'lucide-react'
 import PageHeader from '../components/PageHeader'
 import Reveal from '../components/Reveal'
+
+// Tools I built. `demo` links to a live demo page with dummy data, `caseStudy` to the full story.
+const BUILT_TOOLS = [
+  { key: 'dailyChecker', demo: 'daily-checker', caseStudy: 'export-inland-daily-checker' },
+  { key: 'followUp', demo: 'follow-up-converter' },
+  { key: 'oneGate', caseStudy: 'one-gate-monitoring-system' },
+]
+
+function ToolShowcase({ tool, delay }) {
+  const { t } = useTranslation()
+  const item = t(`tools.items.${tool.key}`)
+  return (
+    <Reveal delay={delay} className="card">
+      <div className="flex flex-wrap items-center gap-2">
+        <h3 className="text-xl font-bold text-slate-900 dark:text-white">{item.name}</h3>
+        <span className="rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-semibold text-brand-700 dark:bg-brand-900/40 dark:text-brand-300">
+          {item.badge}
+        </span>
+      </div>
+      <div className="mt-4 grid gap-6 md:grid-cols-3">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">{t('tools.problem')}</p>
+          <p className="mt-1 text-sm leading-relaxed">{item.problem}</p>
+        </div>
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">{t('tools.howItWorks')}</p>
+          <ol className="mt-1 space-y-1 text-sm">
+            {item.steps.map((step, i) => (
+              <li key={i} className="flex gap-2">
+                <span className="font-bold text-brand-600 dark:text-brand-400">{i + 1}.</span>
+                {step}
+              </li>
+            ))}
+          </ol>
+        </div>
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">{t('tools.impact')}</p>
+          <p className="mt-1 text-sm leading-relaxed">{item.impact}</p>
+        </div>
+      </div>
+      <div className="mt-6 flex flex-wrap gap-3">
+        {tool.demo && (
+          <Link
+            to={`/tools/${tool.demo}`}
+            className="inline-flex items-center gap-2 rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-700 dark:bg-brand-600 dark:hover:bg-brand-700"
+          >
+            <FlaskConical size={16} /> {t('tools.tryDemo')}
+          </Link>
+        )}
+        {tool.caseStudy && (
+          <Link
+            to={`/portfolio/${tool.caseStudy}`}
+            className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:bg-slate-100 dark:border-slate-700 dark:text-slate-100 dark:hover:bg-slate-800"
+          >
+            <BookOpen size={16} /> {t('tools.readCase')} <ArrowRight size={14} />
+          </Link>
+        )}
+      </div>
+    </Reveal>
+  )
+}
 
 function NumberField({ label, value, onChange }) {
   return (
@@ -59,15 +121,25 @@ export default function ToolsPage() {
   const costPerMt = Number(tonnage) > 0 ? totalCost / Number(tonnage) : NaN
   const payload = Number(containers) > 0 ? Number(tonnage) / Number(containers) : NaN
 
-  const [saving, setSaving] = useState('2.5')
-  const [volume, setVolume] = useState('13000')
+  const [saving, setSaving] = useState('1')
+  const [volume, setVolume] = useState('10000')
   const monthly = Number(saving) * Number(volume)
 
   return (
     <>
       <PageHeader title={t('tools.title')} subtitle={t('tools.subtitle')} />
       <section className="section">
+        <h2 className="section-title">{t('tools.builtTitle')}</h2>
+        <div className="space-y-6">
+          {BUILT_TOOLS.map((tool, i) => (
+            <ToolShowcase key={tool.key} tool={tool} delay={i * 0.06} />
+          ))}
+        </div>
+      </section>
+
+      <section className="section pt-0">
         <h2 className="section-title">{t('tools.calculatorsTitle')}</h2>
+        <p className="-mt-6 mb-8 text-sm text-slate-500 dark:text-slate-400">{t('tools.calculatorsDesc')}</p>
         <div className="grid gap-6 md:grid-cols-2">
           <CalcCard icon={Calculator} title={t('tools.costPerMt.title')} desc={t('tools.costPerMt.desc')}>
             <div className="space-y-4">
@@ -95,23 +167,6 @@ export default function ToolsPage() {
               </div>
             </div>
           </CalcCard>
-        </div>
-      </section>
-
-      <section className="section pt-0">
-        <h2 className="section-title">{t('tools.toolkitTitle')}</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {t('tools.toolkit').map((tool, i) => (
-            <Reveal key={tool.name} delay={i * 0.06} className="card flex items-start gap-4">
-              <span className="rounded-xl bg-slate-100 p-2.5 text-slate-700 dark:bg-slate-800 dark:text-slate-200">
-                <Wrench size={20} />
-              </span>
-              <div>
-                <h3 className="font-semibold text-slate-900 dark:text-white">{tool.name}</h3>
-                <p className="mt-1 text-sm">{tool.use}</p>
-              </div>
-            </Reveal>
-          ))}
         </div>
       </section>
     </>

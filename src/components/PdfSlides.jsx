@@ -3,7 +3,7 @@ import { Document, Page, pdfjs } from 'react-pdf'
 import { useTranslation } from 'react-i18next'
 import { ChevronLeft, ChevronRight, Download, ExternalLink, Loader2 } from 'lucide-react'
 
-// Loaded lazily from PortfolioPage, so pdf.js only downloads when someone opens a deck.
+// Loaded lazily from CaseStudyPage, so pdf.js only downloads on case studies that have slides.
 pdfjs.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.mjs', import.meta.url).toString()
 
 export default function PdfSlides({ file }) {
@@ -72,7 +72,7 @@ export default function PdfSlides({ file }) {
       </div>
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-        <div className="flex items-center gap-3">
+        <div className={`flex items-center gap-3 ${numPages === 1 ? 'invisible' : ''}`}>
           <button className={navBtn} onClick={() => setPage((p) => p - 1)} disabled={page <= 1} aria-label={t('portfolio.prev')}>
             <ChevronLeft size={20} />
           </button>
