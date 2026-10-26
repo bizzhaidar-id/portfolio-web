@@ -12,7 +12,7 @@ const ArticleBody = lazy(() => import('../components/ArticleBody'))
 export default function ArticleDetailPage() {
   const { slug } = useParams()
   const { t, i18n } = useTranslation()
-  const article = articles.find((a) => a.slug === slug)
+  const article = articles.get(slug, i18n.language)
   usePageTitle(article?.title ?? t('articles.notFound'))
 
   return (
@@ -33,6 +33,11 @@ export default function ArticleDetailPage() {
               {article.title}
             </h1>
             <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">{article.summary}</p>
+            {article.lang !== i18n.language && (
+              <p className="mt-4 rounded-lg bg-slate-100 px-3 py-2 text-sm text-slate-600 dark:bg-slate-800 dark:text-slate-300">
+                {t('articles.englishOnly')}
+              </p>
+            )}
             <hr className="my-8 border-slate-200 dark:border-slate-800" />
             <Suspense fallback={<div className="h-60" />}>
               <ArticleBody>{article.body}</ArticleBody>
@@ -42,7 +47,7 @@ export default function ArticleDetailPage() {
           <p className="mt-8">{t('articles.notFound')}</p>
         )}
       </article>
-      {article && <CtaBand title={t('home.ctaTitle')} body={t('home.ctaBody')} button={t('home.ctaButton')} />}
+      {article && <CtaBand title={t('articles.ctaTitle')} body={t('home.ctaBody')} button={t('home.ctaButton')} />}
     </>
   )
 }

@@ -1,6 +1,6 @@
 # Ibnu Haidar — Portfolio
 
-Single-page portfolio built with Vite, React, Tailwind CSS (class-based dark mode), i18next (EN/ID), framer-motion, recharts and react-markdown.
+Portfolio site built with Vite, React, Tailwind CSS (class-based dark mode), i18next (EN/ID), framer-motion, recharts and react-markdown.
 
 ## Run locally
 
@@ -14,36 +14,57 @@ npm run dev
 | Menu | URL | File |
 | --- | --- | --- |
 | Home | `/` | `src/pages/HomePage.jsx` |
-| Portfolio | `/portfolio` | `src/pages/PortfolioPage.jsx` |
-| Services | `/services` | `src/pages/ServicesPage.jsx` |
-| Tools | `/tools` | `src/pages/ToolsPage.jsx` |
+| Portfolio | `/portfolio`, `/portfolio/:slug` | `src/pages/PortfolioPage.jsx`, `CaseStudyPage.jsx` |
+| Tools | `/tools`, `/tools/daily-checker`, `/tools/follow-up-converter` | `src/pages/ToolsPage.jsx`, `ToolDemoPage.jsx`, demos in `src/demos/` |
 | Articles | `/articles`, `/articles/:slug` | `src/pages/ArticlesPage.jsx`, `ArticleDetailPage.jsx` |
-| About | `/about` | `src/pages/AboutPage.jsx` (the original landing page sections) |
-| Contact | `/contact` | `src/pages/ContactPage.jsx` |
+| About | `/about` | `src/pages/AboutPage.jsx` |
 
 ## Edit content
 
-- **Text (EN / ID), incl. portfolio projects, services and toolkit:** `src/i18n/en.js` and `src/i18n/id.js`
+### Case studies (Portfolio)
+
+One Markdown file per case study in `src/content/case-studies/`:
+
+- `my-project.md` is the English version, `my-project.id.md` the Indonesian one. Without an `.id.md`, the English version is shown in both languages.
+- The file name becomes the URL: `/portfolio/my-project`.
+- Set `draft: true` in the frontmatter to keep a case study in the repo without showing it on the site.
+
+Frontmatter fields (copy an existing file as a template):
+
+| Field | What it does |
+| --- | --- |
+| `title`, `summary` | Card and page header |
+| `category` | `improvement`, `digital`, `capability` or `research` (filter on the Portfolio page) |
+| `order` | Position in the list, lowest first. The first two appear on Home |
+| `period`, `role`, `method`, `award` | Optional details under the title |
+| `metric`, `metricLabel` | The headline number on the card |
+| `tags` | First three are shown on the card |
+| `kpis` | Before/after bars: `label`, `before`, `after`, `unit`, `note`, and `lower: true` when a smaller number is better |
+| `images` | Optional pictures under the story: `src` (file in `public/case-studies/`) and `alt` |
+| `tool` | Slug of a tool demo to link to, e.g. `daily-checker` |
+
+Body sections follow the case study flow: starting point, root cause, solution, before/after or results, standardize and roll out.
+
+### Articles
+
+Add `my-article.md` to `src/content/articles/` with `title`, `date` (YYYY-MM-DD) and `summary` frontmatter. Add `my-article.id.md` later for the Indonesian version; until then Indonesian readers see the English one with a short note.
+
+### Everything else
+
+- **Interface text (EN / ID):** `src/i18n/en.js` and `src/i18n/id.js`, including the Home impact numbers and the Tools showcase cards
 - **Skill scores:** `COMPETENCIES` and `TOOLS` in `src/sections/Skills.jsx`
 - **Certification links:** `src/sections/Certifications.jsx`
-- **Portfolio slides:** export your PowerPoint as PDF and save it in `public/portfolio/` (e.g. `public/portfolio/my-project.pdf`),
-  then set `file: '/portfolio/my-project.pdf'` on that portfolio item in both `en.js` and `id.js`. Items without `file` show no "View slides" button.
-- **Articles:** add a `.md` file to `src/content/articles/` with `title`, `date` and `summary` frontmatter — it gets its own page at `/articles/<file-name>`
-- **CV:** replace `public/resume.pdf` with your real CV (same file name)
+- **CV:** replace `public/resume.pdf` (same file name)
 
-## Contact form
+## Data rules
 
-By default the form posts to FormSubmit, which delivers to `ibn_haidar@outlook.com` with no API key.
-The **first** submission triggers a one-time activation email to that inbox — click the link in it to start receiving messages.
-
-To use Web3Forms instead, create an access key at https://web3forms.com with `ibn_haidar@outlook.com`, then copy `.env.example` to `.env`
-and set `VITE_WEB3FORMS_KEY` (also add it as an environment variable in Vercel/Netlify).
+No confidential company data on the site: percentages and relative changes instead of absolute figures, and dummy data in every demo and visual. The tool demos in `src/demos/` use invented delivery numbers, vessels, shipping points and transporters.
 
 ## Deploy
+
+Vercel builds the site from the main branch. To deploy by hand:
 
 ```bash
 npx vercel login
 npx vercel --prod
 ```
-
-Or on Netlify: `npx netlify-cli deploy --prod --dir=dist` after `npm run build`.
