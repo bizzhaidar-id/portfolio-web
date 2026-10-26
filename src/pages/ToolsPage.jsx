@@ -48,7 +48,7 @@ function ToolShowcase({ tool, delay }) {
         {tool.demo && (
           <Link
             to={`/tools/${tool.demo}`}
-            className="inline-flex items-center gap-2 rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-700 dark:bg-brand-500 dark:hover:bg-brand-600"
+            className="inline-flex items-center gap-2 rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-700 dark:bg-brand-600 dark:hover:bg-brand-700"
           >
             <FlaskConical size={16} /> {t('tools.tryDemo')}
           </Link>

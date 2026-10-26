@@ -25,7 +25,7 @@ export default function PortfolioPage() {
               onClick={() => setFilter(f)}
               className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${
                 filter === f
-                  ? 'bg-brand-600 text-white dark:bg-brand-500'
+                  ? 'bg-brand-600 text-white dark:bg-brand-600'
                   : 'bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700'
               }`}
             >

@@ -60,7 +60,7 @@ function CopyButton({ text, label = 'Copy', className = '' }) {
     <button
       onClick={copy}
       className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold transition ${
-        done ? 'bg-emerald-600 text-white' : 'bg-brand-600 text-white hover:bg-brand-700 dark:bg-brand-500'
+        done ? 'bg-foliage-700 text-white' : 'bg-brand-600 text-white hover:bg-brand-700 dark:bg-brand-600'
       } ${className}`}
     >
       {done ? <Check size={14} /> : <Copy size={14} />} {done ? 'Copied' : label}
@@ -136,7 +136,7 @@ export default function FollowUpDemo() {
           <button
             onClick={read}
             disabled={reading}
-            className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700 disabled:opacity-60 dark:bg-brand-500"
+            className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700 disabled:opacity-60 dark:bg-brand-600"
           >
             {reading ? <Loader2 size={16} className="animate-spin" /> : <ScanText size={16} />} {reading ? 'Reading…' : 'Read report'}
           </button>
@@ -175,7 +175,7 @@ export default function FollowUpDemo() {
                     <button
                       onClick={() => setRows((rs) => rs.filter((_, j) => j !== i))}
                       aria-label="Remove row"
-                      className="rounded-lg border border-slate-300 px-2 text-slate-500 hover:text-rose-600 dark:border-slate-700"
+                      className="rounded-lg border border-slate-300 px-2 text-slate-500 hover:text-terracotta-600 dark:border-slate-700"
                     >
                       <Trash2 size={16} />
                     </button>
@@ -247,7 +247,7 @@ export default function FollowUpDemo() {
                   <div className="mb-1 flex items-center justify-between gap-2">
                     <span
                       className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${
-                        done ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'
+                        done ? 'bg-foliage-50 text-foliage-700' : 'bg-sunset-200 text-terracotta-800'
                       }`}
                     >
                       {done ? 'On target' : `Outstanding ${c.o20 + c.o40}`}

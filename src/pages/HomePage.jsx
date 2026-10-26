@@ -19,14 +19,14 @@ export default function HomePage() {
   return (
     <>
       <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-100/70 via-transparent to-transparent dark:from-brand-900/30" />
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sunset-200/70 via-brand-50/40 to-transparent dark:from-brand-900/30" />
         <motion.div
           className="mx-auto max-w-5xl px-4 pb-12 pt-20 sm:px-6 sm:pt-28"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
         >
-          <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-terracotta-600 dark:text-terracotta-300">
             {t('home.eyebrow')}
           </p>
           <h1 className="max-w-4xl text-4xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-6xl dark:text-white">
@@ -50,7 +50,7 @@ export default function HomePage() {
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
               to="/portfolio"
-              className="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:bg-brand-700 dark:bg-brand-500 dark:hover:bg-brand-600"
+              className="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:bg-brand-700 dark:bg-brand-600 dark:hover:bg-brand-700"
             >
               {t('home.ctaCases')} <ArrowRight size={18} />
             </Link>

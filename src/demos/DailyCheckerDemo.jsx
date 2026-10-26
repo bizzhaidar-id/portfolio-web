@@ -9,7 +9,7 @@ const STATUS_LABEL = { all: 'All', planned: 'Planned', notPlanned: 'Not planned'
 const fmtMt = (n) => n.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })
 
 function Stat({ label, value, sub, qty, tone }) {
-  const border = { brand: 'border-t-brand-600', green: 'border-t-emerald-600', red: 'border-t-rose-600', slate: 'border-t-slate-400' }
+  const border = { brand: 'border-t-brand-600', green: 'border-t-foliage-700', red: 'border-t-terracotta-600', slate: 'border-t-slate-400' }
   return (
     <div className={`card border-t-4 p-4 ${border[tone]}`}>
       <span className="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">{label}</span>
@@ -75,8 +75,8 @@ export default function DailyCheckerDemo() {
     .filter((r) => !sp || r.sp === sp)
     .sort((a, b) => a.etd.localeCompare(b.etd) || a.delivery.localeCompare(b.delivery))
 
-  const axis = dark ? '#94a3b8' : '#64748b'
-  const grid = dark ? '#1e293b' : '#e2e8f0'
+  const axis = dark ? '#9fa6a6' : '#6f7878'
+  const grid = dark ? '#2c3438' : '#e2e0dd'
 
   return (
     <div className="grid gap-6 lg:grid-cols-[18rem_1fr]">
@@ -92,7 +92,7 @@ export default function DailyCheckerDemo() {
         </div>
         <div className="card p-4">
           <label htmlFor="plan" className="flex items-center gap-2 font-semibold text-slate-900 dark:text-white">
-            <FileSpreadsheet size={18} className="text-amber-600" /> Plan list
+            <FileSpreadsheet size={18} className="text-terracotta-600" /> Plan list
           </label>
           <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
             Delivery numbers already planned. Delete or paste numbers and the results update.
@@ -137,7 +137,7 @@ export default function DailyCheckerDemo() {
           <Stat tone="slate" label="Plan list size" value={planList.length} />
         </div>
 
-        <div className="card border-l-4 border-l-amber-500 p-4">
+        <div className="card border-l-4 border-l-terracotta-600 p-4">
           <p className="font-semibold text-slate-900 dark:text-white">Plan entries not found in Outstanding</p>
           <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
             Likely already shipped, cancelled, or a data mismatch worth checking.
@@ -151,7 +151,7 @@ export default function DailyCheckerDemo() {
               ))}
             </div>
           ) : (
-            <p className="mt-2 text-sm text-emerald-600 dark:text-emerald-400">Every plan entry matches an outstanding delivery.</p>
+            <p className="mt-2 text-sm text-foliage-600 dark:text-foliage-300">Every plan entry matches an outstanding delivery.</p>
           )}
         </div>
 
@@ -165,15 +165,15 @@ export default function DailyCheckerDemo() {
                 <XAxis dataKey="sp" tick={{ fill: axis, fontSize: 12 }} axisLine={false} tickLine={false} />
                 <YAxis tick={{ fill: axis, fontSize: 12 }} axisLine={false} tickLine={false} width={40} />
                 <Tooltip
-                  cursor={{ fill: dark ? '#1e293b' : '#f1f5f9' }}
-                  contentStyle={{ background: dark ? '#0f172a' : '#fff', border: `1px solid ${grid}`, borderRadius: 8, fontSize: 12 }}
+                  cursor={{ fill: dark ? '#2c3438' : '#efedea' }}
+                  contentStyle={{ background: dark ? '#1d2428' : '#fff', border: `1px solid ${grid}`, borderRadius: 8, fontSize: 12 }}
                 />
-                <Bar dataKey="planned" name="Planned" stackId="a" fill="#059669" className="cursor-pointer">
+                <Bar dataKey="planned" name="Planned" stackId="a" fill="#2C482A" className="cursor-pointer">
                   {bySp.map((d) => (
                     <Cell key={d.sp} fillOpacity={!sp || sp === d.sp ? 1 : 0.3} />
                   ))}
                 </Bar>
-                <Bar dataKey="notPlanned" name="Not planned" stackId="a" fill="#e11d48" radius={[4, 4, 0, 0]} className="cursor-pointer">
+                <Bar dataKey="notPlanned" name="Not planned" stackId="a" fill="#9C5D4E" radius={[4, 4, 0, 0]} className="cursor-pointer">
                   {bySp.map((d) => (
                     <Cell key={d.sp} fillOpacity={!sp || sp === d.sp ? 1 : 0.3} />
                   ))}
@@ -191,7 +191,7 @@ export default function DailyCheckerDemo() {
                   key={s}
                   onClick={() => setStatus(s)}
                   className={`px-3 py-1.5 text-xs font-semibold ${
-                    status === s ? 'bg-brand-600 text-white dark:bg-brand-500' : 'hover:bg-slate-100 dark:hover:bg-slate-800'
+                    status === s ? 'bg-brand-600 text-white dark:bg-brand-600' : 'hover:bg-slate-100 dark:hover:bg-slate-800'
                   }`}
                 >
                   {STATUS_LABEL[s]}
@@ -209,7 +209,7 @@ export default function DailyCheckerDemo() {
             <button
               onClick={() => downloadCsv(notPlanned)}
               disabled={!notPlanned.length}
-              className="ml-auto inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-brand-700 disabled:opacity-40 dark:bg-brand-500"
+              className="ml-auto inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-brand-700 disabled:opacity-40 dark:bg-brand-600"
             >
               <Download size={14} /> Export not planned (CSV)
             </button>
@@ -233,11 +233,11 @@ export default function DailyCheckerDemo() {
                   <tr key={r.delivery} className="border-t border-slate-200 odd:bg-white even:bg-slate-50 dark:border-slate-800 dark:odd:bg-slate-900 dark:even:bg-slate-900/60">
                     <td className="px-3 py-2">
                       {r.planned ? (
-                        <span className="inline-flex items-center gap-1 rounded bg-emerald-100 px-2 py-0.5 font-semibold text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300">
+                        <span className="inline-flex items-center gap-1 rounded bg-foliage-50 px-2 py-0.5 font-semibold text-foliage-700 dark:bg-foliage-900/50 dark:text-foliage-300">
                           <CheckCircle2 size={12} /> Planned
                         </span>
                       ) : (
-                        <span className="inline-flex items-center gap-1 whitespace-nowrap rounded bg-rose-100 px-2 py-0.5 font-semibold text-rose-800 dark:bg-rose-900/40 dark:text-rose-300">
+                        <span className="inline-flex items-center gap-1 whitespace-nowrap rounded bg-sunset-200 px-2 py-0.5 font-semibold text-terracotta-800 dark:bg-terracotta-900/50 dark:text-terracotta-200">
                           <XCircle size={12} /> Not planned
                         </span>
                       )}

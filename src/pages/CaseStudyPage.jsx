@@ -43,7 +43,7 @@ export default function CaseStudyPage() {
           >
             <ArrowLeft size={16} /> {t('portfolio.back')}
           </Link>
-          <p className="mt-8 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+          <p className="mt-8 text-xs font-semibold uppercase tracking-wider text-terracotta-600 dark:text-terracotta-300">
             {t(`portfolio.categories.${study.category}`)}
           </p>
           <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-5xl dark:text-white">{study.title}</h1>
@@ -65,7 +65,7 @@ export default function CaseStudyPage() {
             )}
           </div>
           {study.award && (
-            <p className="mt-6 inline-flex items-center gap-2 rounded-full bg-amber-100 px-3 py-1 text-sm font-semibold text-amber-800 dark:bg-amber-900/40 dark:text-amber-300">
+            <p className="mt-6 inline-flex items-center gap-2 rounded-full bg-terracotta-100 px-3 py-1 text-sm font-semibold text-terracotta-800 dark:bg-terracotta-900/50 dark:text-terracotta-200">
               <Award size={16} /> {study.award}
             </p>
           )}

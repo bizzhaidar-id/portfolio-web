@@ -19,7 +19,7 @@ export default function KpiCompare({ kpis }) {
           <Reveal key={k.label} delay={i * 0.06} className="card p-5">
             <div className="flex items-baseline justify-between gap-3">
               <h3 className="text-sm font-semibold text-slate-900 dark:text-white">{k.label}</h3>
-              <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400">
+              <span className="text-xs font-medium text-foliage-600 dark:text-foliage-300">
                 {k.lower ? '↓' : '↑'} {t('portfolio.better')}
               </span>
             </div>

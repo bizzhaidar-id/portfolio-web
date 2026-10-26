@@ -49,7 +49,7 @@ export default function ToolDemoPage() {
           </Link>
           <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl dark:text-white">{item.name}</h1>
           <p className="mt-3 max-w-3xl text-lg text-slate-600 dark:text-slate-400">{item.demoIntro}</p>
-          <p className="mt-4 flex max-w-3xl items-start gap-2 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-900 dark:bg-amber-900/30 dark:text-amber-200">
+          <p className="mt-4 flex max-w-3xl items-start gap-2 rounded-lg bg-sunset-100 px-3 py-2 text-sm text-terracotta-800 dark:bg-terracotta-900/40 dark:text-terracotta-200">
             <Info size={16} className="mt-0.5 shrink-0" /> {t('tools.dummyNote')}
           </p>
         </Reveal>
