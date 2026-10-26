@@ -9,6 +9,7 @@ import { usePageTitle } from '../lib/site'
 import { caseStudies } from '../lib/caseStudies'
 
 const ArticleBody = lazy(() => import('../components/ArticleBody'))
+const PdfSlides = lazy(() => import('../components/PdfSlides'))
 
 export default function CaseStudyPage() {
   const { slug } = useParams()
@@ -77,6 +78,16 @@ export default function CaseStudyPage() {
           <h2 className="mb-2 text-xl font-bold text-slate-900 dark:text-white">{t('portfolio.compareTitle')}</h2>
           <p className="mb-6 text-sm text-slate-500 dark:text-slate-400">{t('portfolio.compareNote')}</p>
           <KpiCompare kpis={study.kpis} />
+        </section>
+      )}
+
+      {study.slides && (
+        <section className="mx-auto max-w-5xl px-4 pt-12 sm:px-6">
+          <h2 className="mb-2 text-xl font-bold text-slate-900 dark:text-white">{t('portfolio.slidesTitle')}</h2>
+          <p className="mb-6 text-sm text-slate-500 dark:text-slate-400">{t('portfolio.slidesNote')}</p>
+          <Suspense fallback={<div className="aspect-video rounded-xl bg-slate-100 dark:bg-slate-900" />}>
+            <PdfSlides file={study.slides} />
+          </Suspense>
         </section>
       )}
 

@@ -3,6 +3,7 @@ title: "Export Inland Daily Checker"
 category: digital
 order: 3
 period: "Q4 2026"
+slides: "/case-studies/export-inland-daily-checker.pdf"
 role: "Perancang dan pembuat"
 method: "Dibangun dengan AI (Claude)"
 summary: "Tool berbasis browser yang membandingkan daftar outstanding delivery dengan rencana trucking dan menandai setiap delivery yang belum direncanakan, supaya tidak ada yang terlewat."

@@ -41,6 +41,7 @@ Frontmatter fields (copy an existing file as a template):
 | `tags` | First three are shown on the card |
 | `kpis` | Before/after bars: `label`, `before`, `after`, `unit`, `note`, and `lower: true` when a smaller number is better |
 | `images` | Optional pictures under the story: `src` (file in `public/case-studies/`) and `alt` |
+| `slides` | Optional PDF deck shown as a slide viewer, e.g. `/case-studies/my-project.pdf` (file in `public/case-studies/`). Check it for company data first |
 | `tool` | Slug of a tool demo to link to, e.g. `daily-checker` |
 
 Body sections follow the case study flow: starting point, root cause, solution, before/after or results, standardize and roll out.

@@ -3,6 +3,7 @@ title: "One Gate Monitoring System"
 category: improvement
 order: 2
 period: "Jun – Okt 2025"
+slides: "/case-studies/one-gate-monitoring-system.pdf"
 role: "Project lead"
 method: "SGA 8 langkah PDCA"
 summary: "Mengganti report delivery manual dengan platform Power BI otomatis yang terhubung ke SAP. Monitoring harian turun dari tiga kali 30 menit menjadi satu menit, dan OTIF serta pemerataan stuffing sama-sama membaik di bulan pertama."
