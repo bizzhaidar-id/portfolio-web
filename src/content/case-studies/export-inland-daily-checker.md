@@ -2,6 +2,7 @@
 title: "Export Inland Daily Checker"
 category: digital
 order: 3
+period: "Q4 2026"
 role: "Designer and builder"
 method: "Built with AI (Claude)"
 summary: "A browser tool that compares the outstanding delivery list with the trucking plan and flags every delivery that is not planned yet, so nothing gets skipped."

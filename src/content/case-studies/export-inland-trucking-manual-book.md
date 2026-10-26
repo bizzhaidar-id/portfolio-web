@@ -2,6 +2,7 @@
 title: "Export Inland Trucking Manual Book"
 category: capability
 order: 4
+period: "Q4 2025"
 role: "Author and compiler"
 summary: "One reference book that takes a newcomer through export trucking end to end: process flow, documents, roles, systems, common issues and step-by-step work instructions."
 metric: "8"

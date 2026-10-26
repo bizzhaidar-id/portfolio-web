@@ -2,6 +2,7 @@
 title: "Manual Book Export Inland Trucking"
 category: capability
 order: 4
+period: "Q4 2025"
 role: "Penulis dan penyusun"
 summary: "Satu buku referensi yang membawa karyawan baru memahami export trucking dari awal sampai akhir: alur proses, dokumen, peran, sistem, masalah umum, dan work instruction langkah demi langkah."
 metric: "8"

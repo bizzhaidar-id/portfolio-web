@@ -5,8 +5,8 @@
 - [x] CV dengan nomor HP disamarkan
 - [x] Home, Portfolio (4 case study EN + ID), Tools (2 demo live + 1 showcase), About
 - [x] Draft disimpan: Transit Fee Avoidance, Market Outlook, Learning Modules
-- [ ] Artikel 1: membangun tool operasional dengan AI (menunggu wawancara)
-- [ ] Artikel 2: visibility first lewat One Gate (menunggu wawancara)
+- [ ] Artikel 1: membangun tool operasional dengan AI (ditunda; halaman Articles menampilkan pesan "sedang ditulis")
+- [ ] Artikel 2: visibility first lewat One Gate (ditunda)
 - [ ] Merge ke branch utama supaya live di Vercel
 
 Hasil wawancara sebelum build. Melengkapi brief project (masalah, pemakai, fitur, batasan tetap berlaku).
